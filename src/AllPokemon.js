@@ -1,33 +1,66 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
-//requirements and notes
-//make multiple api calls to show list of pokemon.
-//clicking on the pokemon will display data of that pokemon on top.
-
-//https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png (pokemon image, change ID at end).
+import SmallPokemonCard from "./SmallPokemonCard";
 
 function AllPokemon() {
-  const [pokemon, setPokemon] = useState([]);
+  const [pokemon, setPokemon] = useState();
   const [currentUrl, setCurrentUrl] = useState(
     "https://pokeapi.co/api/v2/pokemon"
   );
   const [nextUrl, setNextUrl] = useState("");
   const [prevUrl, setPrevUrl] = useState("");
+  const [loading, isLoading] = useState(true);
 
-  useEffect(() => {
+  const pokemonList = () => {
     axios.get(currentUrl).then((res) => {
-      setPokemon(res.data.results.map((p) => p.name));
       setNextUrl(res.data.next);
       setPrevUrl(res.data.previous);
+      pokemonData(res.data.results);
     });
+  };
+
+  const pokemonData = (results) => {
+    let pokeData = results.map((data) => axios.get(data.url));
+    Promise.all(pokeData).then((res) => {
+      setPokemon(
+        res.map((pokemon) => (
+          <SmallPokemonCard
+            key={pokemon.data.id}
+            name={pokemon.data.name}
+            id={pokemon.data.id}
+            type={pokemon.data.types.map((type) => type.type.name).join(", ")}
+            abilities={pokemon.data.abilities
+              .map((ability) => ability.ability.name)
+              .join(", ")}
+            height={pokemon.data.height}
+            weight={pokemon.data.weight}
+            moves={pokemon.data.moves.map((move) => move.move.name).join(", ")}
+            image={pokemon.data.sprites.other.dream_world.front_default}
+            hp={pokemon.data.stats[0].base_stat}
+            attack={pokemon.data.stats[1].base_stat}
+            defense={pokemon.data.stats[2].base_stat}
+            specialAttack={pokemon.data.stats[3].base_stat}
+            specialDefense={pokemon.data.stats[4].base_stat}
+            speed={pokemon.data.stats[5].base_stat}
+          />
+        ))
+      );
+    });
+
+    isLoading(false);
+  };
+
+  useEffect(() => {
+    pokemonList();
   }, [currentUrl]);
+
+  //console.log(pokemon == undefined ? "Loading data..." : pokemon[0].name);
 
   return (
     <div>
-      {pokemon}
-      {nextUrl}
-      {prevUrl === null ? "no previous url" : prevUrl}
+      {loading ? "Loading..." : pokemon}
+      <p>{nextUrl}</p>
+      <p>{prevUrl == null ? "No Previous page" : prevUrl}</p>
     </div>
   );
 }
