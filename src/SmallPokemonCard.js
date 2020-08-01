@@ -1,4 +1,5 @@
 import React from "react";
+import "./style/style.css";
 
 //https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png (pokemon image, change ID at end).
 
@@ -19,9 +20,10 @@ function SmallPokemonCard({
   speed,
 }) {
   return (
-    <div>
-      <p>{name}</p>
+    <div className="smallCard">
+      <p className="smallCardName">{`#${id} ${name}`}</p>
       <img src={image}></img>
+      <p>{type}</p>
     </div>
   );
 }

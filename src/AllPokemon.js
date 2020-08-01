@@ -55,13 +55,11 @@ function AllPokemon() {
   }, [currentUrl]);
 
   //console.log(pokemon == undefined ? "Loading data..." : pokemon[0].name);
+  //<p>{nextUrl}</p>
+  //<p>{prevUrl == null ? "No Previous page" : prevUrl}</p>
 
   return (
-    <div>
-      {loading ? "Loading..." : pokemon}
-      <p>{nextUrl}</p>
-      <p>{prevUrl == null ? "No Previous page" : prevUrl}</p>
-    </div>
+    <div className="cardContainer">{loading ? "Loading..." : pokemon}</div>
   );
 }
 
