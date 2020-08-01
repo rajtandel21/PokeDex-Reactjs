@@ -23,7 +23,7 @@ function SmallPokemonCard({
     <div className="smallCard">
       <p className="smallCardName">{`#${id} ${name}`}</p>
       <img src={image}></img>
-      <p>{type}</p>
+      <p className="type">{type}</p>
     </div>
   );
 }

@@ -11,6 +11,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  color: white;
 }
 
 .cardContainer {
@@ -32,19 +33,30 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: #cf4949;
-  color: white;
+  background-image: url("./PokemonCard.png");
+  background-size: contain;
+  background-repeat: no-repeat;
   font-size: 18px;
   margin: 20px;
   text-transform: capitalize;
   border-radius: 5px;
   text-align: center;
+  cursor: pointer;
 }
 
 .cardContainer .smallCard img {
   height: 140px;
-  width: 200px;
+  width: 235px;
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+.cardContainer .smallCard .type {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  width: 150px;
+  color: black;
+  border: 1px solid black;
 }
 /*# sourceMappingURL=style.css.map */

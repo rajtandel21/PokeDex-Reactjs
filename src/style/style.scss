@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: white;
 }
 
 .cardContainer {
@@ -13,17 +14,25 @@
   .smallCard {
     display: flex;
     flex-direction: column;
-    background-color: rgb(207, 73, 73);
-    color: white;
+    background-image: url("./PokemonCard.png");
+    background-size: contain;
+    background-repeat: no-repeat;
     font-size: 18px;
     margin: 20px;
     text-transform: capitalize;
     border-radius: 5px;
     text-align: center;
+    cursor: pointer;
     img {
       height: 140px;
-      width: 200px;
+      width: 235px;
       object-fit: contain;
+    }
+    .type {
+      align-self: center;
+      width: 150px;
+      color: black;
+      border: 1px solid black;
     }
   }
 }
