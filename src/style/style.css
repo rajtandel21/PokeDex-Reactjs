@@ -11,7 +11,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: white;
+  color: #f0f0f0;
 }
 
 .cardContainer {
@@ -23,6 +23,18 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.cardContainer .bigCard {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 2;
+  height: 50vh;
+  width: 50vw;
+  background-color: yellow;
 }
 
 .cardContainer .smallCard {
@@ -42,6 +54,16 @@
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
+}
+
+.cardContainer .smallCard:hover {
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+}
+
+.cardContainer .smallCard .smallCardName {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .cardContainer .smallCard img {

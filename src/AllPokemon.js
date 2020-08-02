@@ -54,12 +54,24 @@ function AllPokemon() {
     pokemonList();
   }, [currentUrl]);
 
+  const nextBtn = () => {
+    setCurrentUrl(nextUrl);
+    isLoading(true);
+  };
+
+  const previousBtn = () => {
+    setCurrentUrl(prevUrl);
+    isLoading(true);
+  };
+
   //console.log(pokemon == undefined ? "Loading data..." : pokemon[0].name);
   //<p>{nextUrl}</p>
   //<p>{prevUrl == null ? "No Previous page" : prevUrl}</p>
 
   return (
-    <div className="cardContainer">{loading ? "Loading..." : pokemon}</div>
+    <div>
+      <div className="cardContainer">{loading ? "Loading..." : pokemon}</div>
+    </div>
   );
 }
 
