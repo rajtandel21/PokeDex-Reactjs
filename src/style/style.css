@@ -27,6 +27,16 @@
 
 .cardContainer .bigCard {
   position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -34,7 +44,23 @@
   z-index: 2;
   height: 50vh;
   width: 50vw;
-  background-color: yellow;
+  background-color: #1a1919;
+}
+
+.cardContainer .bigCard .details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  border: 1px solid yellow;
+  width: 90%;
+}
+
+.cardContainer .bigCard .details .smallDetails img {
+  height: 230px;
+  width: 220px;
 }
 
 .cardContainer .smallCard {
