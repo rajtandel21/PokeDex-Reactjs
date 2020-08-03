@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SmallPokemonCard from "./SmallPokemonCard";
 import BigPokemonCard from "./BigPokemonCard";
+import Nav from "./Nav";
 
 function AllPokemon() {
   const [pokemon, setPokemon] = useState();
@@ -13,9 +14,10 @@ function AllPokemon() {
   const [loading, isLoading] = useState(true);
 
   const [card, showCard] = useState(false);
-  const [id, setId] = useState(1);
-  const openDetails = (id) => {
-    setId(id);
+  const [props, setProps] = useState();
+
+  const openDetails = (props) => {
+    setProps(props);
     showCard(true);
   };
   const closeCard = () => {
@@ -28,6 +30,16 @@ function AllPokemon() {
       setPrevUrl(res.data.previous);
       pokemonData(res.data.results);
     });
+  };
+
+  const ImageUrl = (id) => {
+    if (id >= 10 && id < 100) {
+      return `https://assets.pokemon.com/assets/cms2/img/pokedex/full/0${id}.png`;
+    } else if (id < 10) {
+      return `https://assets.pokemon.com/assets/cms2/img/pokedex/full/00${id}.png`;
+    } else {
+      return `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png`;
+    }
   };
 
   const pokemonData = (results) => {
@@ -46,14 +58,15 @@ function AllPokemon() {
             height={pokemon.data.height}
             weight={pokemon.data.weight}
             moves={pokemon.data.moves.map((move) => move.move.name).join(", ")}
-            image={pokemon.data.sprites.other.dream_world.front_default}
+            image={ImageUrl(pokemon.data.id)}
+            altImage={pokemon.data.sprites.front_default}
             hp={pokemon.data.stats[0].base_stat}
             attack={pokemon.data.stats[1].base_stat}
             defense={pokemon.data.stats[2].base_stat}
             specialAttack={pokemon.data.stats[3].base_stat}
             specialDefense={pokemon.data.stats[4].base_stat}
             speed={pokemon.data.stats[5].base_stat}
-            openDetails={openDetails(pokemon.data.id)}
+            openDetails={openDetails}
           />
         ))
       );
@@ -67,13 +80,17 @@ function AllPokemon() {
   }, [currentUrl]);
 
   const nextBtn = () => {
-    setCurrentUrl(nextUrl);
-    isLoading(true);
+    if (nextUrl != null) {
+      setCurrentUrl(nextUrl);
+      isLoading(true);
+    }
   };
 
   const previousBtn = () => {
-    setCurrentUrl(prevUrl);
-    isLoading(true);
+    if (prevUrl != null) {
+      setCurrentUrl(prevUrl);
+      isLoading(true);
+    }
   };
 
   //console.log(pokemon == undefined ? "Loading data..." : pokemon[0].name);
@@ -81,23 +98,25 @@ function AllPokemon() {
   //<p>{prevUrl == null ? "No Previous page" : prevUrl}</p>
 
   return (
-    <div>
+    <div className="App-header">
+      <Nav nextBtn={nextBtn} previousBtn={previousBtn} />
       {card ? (
         <BigPokemonCard
-          name={"blubasaur"}
-          id={id}
-          /*type={type}
-          abilities={abilities}
-          height={height}
-          weight={weight}
-          moves={moves}
-          image={image}
-          hp={hp}
-          attack={attack}
-          defense={defense}
-          specialAttack={specialAttack}
-          specialDefense={specialDefense}
-          speed={speed}*/
+          name={props.name}
+          id={props.id}
+          type={props.type}
+          abilities={props.abilities}
+          height={props.height}
+          weight={props.weight}
+          moves={props.moves}
+          image={props.image}
+          altImage={props.altImage}
+          hp={props.hp}
+          attack={props.attack}
+          defense={props.defense}
+          specialAttack={props.specialAttack}
+          specialDefense={props.specialDefense}
+          speed={props.speed}
           closeCard={closeCard}
         />
       ) : null}

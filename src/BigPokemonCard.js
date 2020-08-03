@@ -18,25 +18,27 @@ function BigPokemonCard({
   speed,
   closeCard,
 }) {
-  //make BigPokemonCard one component and the data dynamic.
-  //Instead of a element for every pokemon availabe on page.
+  //Make a drop down list for the pokemon moves data.
   return (
     <div className="bigCard" onClick={closeCard}>
       <h1>{`#${id} ${name}`}</h1>
       <div className="details">
         <div className="smallDetails">
-          <img src={image}></img>
-          <p>{type}</p>
-          <p>{`Abilities: ${abilities}`}</p>
-          <p>{`Height: ${height}  Weight: ${weight}`}</p>
+          <img src={image} alt="Pokemon not found"></img>
+          <p>Type: {type}</p>
+          <p>Abilities: {abilities}</p>
+          <p>
+            Height: {height * 10}cm Weight: {weight / 10}kg
+          </p>
         </div>
         <div className="stats">
-          <p>{`Hp: ${hp}`}</p>
-          <p>{`Attack: ${attack}`}</p>
-          <p>{`Special Attack: ${specialAttack}`}</p>
-          <p>{`Defense: ${defense}`}</p>
-          <p>{`Special Defense: ${specialDefense}`}</p>
-          <p>{`Speed: ${speed}`}</p>
+          <p>Bast Stats:</p>
+          <p>Hp: {hp}</p>
+          <p>Attack: {attack}</p>
+          <p>Special Attack: {specialAttack}</p>
+          <p>Defense: {defense}</p>
+          <p>Special Defense: {specialDefense}</p>
+          <p>Speed: {speed}</p>
         </div>
       </div>
     </div>

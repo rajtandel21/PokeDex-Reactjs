@@ -1,31 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style/style.css";
 
 //https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png (pokemon image, change ID at end).
 
-function SmallPokemonCard({
-  name,
-  id,
-  type,
-  abilities,
-  height,
-  weight,
-  moves,
-  image,
-  hp,
-  attack,
-  defense,
-  specialAttack,
-  specialDefense,
-  speed,
-  openDetails,
-}) {
+function SmallPokemonCard(props) {
+  const otherImage = (e) => {
+    e.target.src = props.altImage;
+  };
   return (
     <div>
-      <div className="smallCard" onClick={openDetails}>
-        <p className="smallCardName">{`#${id} ${name}`}</p>
-        <img src={image} alt={`Could not get ${name}`}></img>
-        <p className="type">{type}</p>
+      <div className="smallCard" onClick={() => props.openDetails(props)}>
+        <p className="smallCardName">{`#${props.id} ${props.name}`}</p>
+        <img
+          src={props.image}
+          onError={otherImage}
+          alt={`Could Not Get ${props.name}`}
+        ></img>
+        <p className="type">{props.type}</p>
       </div>
     </div>
   );
