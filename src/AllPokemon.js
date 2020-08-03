@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SmallPokemonCard from "./SmallPokemonCard";
+import BigPokemonCard from "./BigPokemonCard";
 
 function AllPokemon() {
   const [pokemon, setPokemon] = useState();
@@ -10,6 +11,16 @@ function AllPokemon() {
   const [nextUrl, setNextUrl] = useState("");
   const [prevUrl, setPrevUrl] = useState("");
   const [loading, isLoading] = useState(true);
+
+  const [card, showCard] = useState(false);
+  const [id, setId] = useState(1);
+  const openDetails = (id) => {
+    setId(id);
+    showCard(true);
+  };
+  const closeCard = () => {
+    showCard(false);
+  };
 
   const pokemonList = () => {
     axios.get(currentUrl).then((res) => {
@@ -42,6 +53,7 @@ function AllPokemon() {
             specialAttack={pokemon.data.stats[3].base_stat}
             specialDefense={pokemon.data.stats[4].base_stat}
             speed={pokemon.data.stats[5].base_stat}
+            openDetails={openDetails(pokemon.data.id)}
           />
         ))
       );
@@ -70,6 +82,25 @@ function AllPokemon() {
 
   return (
     <div>
+      {card ? (
+        <BigPokemonCard
+          name={"blubasaur"}
+          id={id}
+          /*type={type}
+          abilities={abilities}
+          height={height}
+          weight={weight}
+          moves={moves}
+          image={image}
+          hp={hp}
+          attack={attack}
+          defense={defense}
+          specialAttack={specialAttack}
+          specialDefense={specialDefense}
+          speed={speed}*/
+          closeCard={closeCard}
+        />
+      ) : null}
       <div className="cardContainer">{loading ? "Loading..." : pokemon}</div>
     </div>
   );

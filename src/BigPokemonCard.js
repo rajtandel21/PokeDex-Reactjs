@@ -18,6 +18,8 @@ function BigPokemonCard({
   speed,
   closeCard,
 }) {
+  //make BigPokemonCard one component and the data dynamic.
+  //Instead of a element for every pokemon availabe on page.
   return (
     <div className="bigCard" onClick={closeCard}>
       <h1>{`#${id} ${name}`}</h1>
