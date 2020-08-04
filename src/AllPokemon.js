@@ -60,6 +60,7 @@ function AllPokemon() {
             moves={pokemon.data.moves.map((move) => move.move.name).join(", ")}
             image={ImageUrl(pokemon.data.id)}
             altImage={pokemon.data.sprites.front_default}
+            altImage2={pokemon.data.forms[0].url}
             hp={pokemon.data.stats[0].base_stat}
             attack={pokemon.data.stats[1].base_stat}
             defense={pokemon.data.stats[2].base_stat}
@@ -111,6 +112,7 @@ function AllPokemon() {
           moves={props.moves}
           image={props.image}
           altImage={props.altImage}
+          altImage2={props.altImage2}
           hp={props.hp}
           attack={props.attack}
           defense={props.defense}

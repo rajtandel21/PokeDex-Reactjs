@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style/style.css";
+import axios from "axios";
 
 //https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png (pokemon image, change ID at end).
 
 function SmallPokemonCard(props) {
+  const [finalImage, setFinalImage] = useState("");
   const otherImage = (e) => {
-    e.target.src = props.altImage;
+    if (props.altImage !== null) {
+      e.target.src = props.altImage;
+    } else {
+      axios.get(props.altImage2).then((res) => {
+        setFinalImage(res.data.sprites.front_default);
+      });
+      if (finalImage != null) {
+        e.target.src = finalImage;
+      }
+    }
   };
   return (
     <div>
