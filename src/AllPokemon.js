@@ -16,14 +16,6 @@ function AllPokemon() {
   const [card, showCard] = useState(false);
   const [props, setProps] = useState();
 
-  const openDetails = (props) => {
-    setProps(props);
-    showCard(true);
-  };
-  const closeCard = () => {
-    showCard(false);
-  };
-
   const pokemonList = () => {
     axios.get(currentUrl).then((res) => {
       setNextUrl(res.data.next);
@@ -94,13 +86,27 @@ function AllPokemon() {
     }
   };
 
+  const openDetails = (props) => {
+    setProps(props);
+    showCard(true);
+  };
+  const closeCard = () => {
+    showCard(false);
+  };
+
+  const rangeList = (range) => {
+    let num = parseInt(range / 10, 10) * 10;
+    //setCurrentUrl(`https://pokeapi.co/api/v2/pokemon/?offset=${num}&limit=20`);
+    console.log(num);
+  };
+
   //console.log(pokemon == undefined ? "Loading data..." : pokemon[0].name);
   //<p>{nextUrl}</p>
   //<p>{prevUrl == null ? "No Previous page" : prevUrl}</p>
 
   return (
     <div className="App-header">
-      <Nav nextBtn={nextBtn} previousBtn={previousBtn} />
+      <Nav nextBtn={nextBtn} previousBtn={previousBtn} rangeList={rangeList} />
       {card ? (
         <BigPokemonCard
           name={props.name}
