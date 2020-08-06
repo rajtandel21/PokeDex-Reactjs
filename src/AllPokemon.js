@@ -96,7 +96,7 @@ function AllPokemon() {
 
   const rangeList = (range) => {
     let num = parseInt(range / 10, 10) * 10;
-    //setCurrentUrl(`https://pokeapi.co/api/v2/pokemon/?offset=${num}&limit=20`);
+    setCurrentUrl(`https://pokeapi.co/api/v2/pokemon/?offset=${num}&limit=20`);
     console.log(num);
   };
 
@@ -126,6 +126,7 @@ function AllPokemon() {
           specialDefense={props.specialDefense}
           speed={props.speed}
           closeCard={closeCard}
+          cardOpen={card}
         />
       ) : null}
       <div className="cardContainer">{loading ? "Loading..." : pokemon}</div>

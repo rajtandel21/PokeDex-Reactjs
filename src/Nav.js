@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style/style.css";
 
-function Nav({ nextBtn, previousBtn }) {
+function Nav({ nextBtn, previousBtn, rangeList }) {
+  const [rangeNum, setRangeNum] = useState(null);
+  const enteredText = (event) => {
+    setRangeNum(event.target.value);
+  };
+
   return (
     <div className="NavBar">
       <h1 className="pageTitle">Pokedex</h1>
       <div>
-        <input type="text" placeholder="Pokemon Range"></input>
-        <button>Search</button>
+        <input
+          type="text"
+          placeholder="Pokemon Range"
+          onChange={enteredText}
+        ></input>
+        <button onClick={() => rangeList(rangeNum)}>Search</button>
       </div>
       <div>
         <input type="text" placeholder="Specific Pokemon"></input>

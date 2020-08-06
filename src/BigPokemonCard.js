@@ -20,21 +20,25 @@ function BigPokemonCard({
   specialDefense,
   speed,
   closeCard,
+  cardOpen,
 }) {
-  const [finalImage, setFinalImage] = useState("");
-  const otherImage = (e) => {
-    if (altImage !== null) {
-      e.target.src = altImage;
-    } else if (finalImage != null) {
-      e.target.src = finalImage;
-    }
-  };
+  const [defaultImage, setDefaultImage] = useState();
 
   useEffect(() => {
-    axios.get(altImage2).then((res) => {
-      setFinalImage(res.data.sprites.front_default);
-    });
-  }, [altImage2]);
+    if (id > 807) {
+      if (altImage !== null) {
+        setDefaultImage(altImage);
+      } else {
+        axios.get(altImage2).then((res) => {
+          if (res.data.sprites.front_default !== null) {
+            setDefaultImage(res.data.sprites.front_default);
+          }
+        });
+      }
+    } else {
+      setDefaultImage(image);
+    }
+  }, [id]);
 
   //Make a drop down list for the pokemon moves data.
   return (
@@ -42,7 +46,7 @@ function BigPokemonCard({
       <h1>{`#${id} ${name}`}</h1>
       <div className="details">
         <div className="smallDetails">
-          <img src={image} onError={otherImage} alt="Pokemon not found"></img>
+          <img src={defaultImage} alt="Pokemon not found"></img>
           <p>Type: {type}</p>
           <p>Abilities: {abilities}</p>
           <p>
