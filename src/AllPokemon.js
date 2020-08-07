@@ -106,7 +106,14 @@ function AllPokemon() {
 
   return (
     <div className="App-header">
-      <Nav nextBtn={nextBtn} previousBtn={previousBtn} rangeList={rangeList} />
+      <Nav
+        nextBtn={nextBtn}
+        previousBtn={previousBtn}
+        rangeList={rangeList}
+        openDetails={openDetails}
+        ImageUrl={ImageUrl}
+        closeCard={closeCard}
+      />
       {card ? (
         <BigPokemonCard
           name={props.name}
@@ -126,7 +133,6 @@ function AllPokemon() {
           specialDefense={props.specialDefense}
           speed={props.speed}
           closeCard={closeCard}
-          cardOpen={card}
         />
       ) : null}
       <div className="cardContainer">{loading ? "Loading..." : pokemon}</div>

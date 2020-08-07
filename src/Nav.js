@@ -1,10 +1,44 @@
 import React, { useState } from "react";
 import "./style/style.css";
+import axios from "axios";
 
-function Nav({ nextBtn, previousBtn, rangeList }) {
-  const [rangeNum, setRangeNum] = useState(null);
+function Nav({
+  nextBtn,
+  previousBtn,
+  rangeList,
+  openDetails,
+  ImageUrl,
+  closeCard,
+}) {
+  const [searchText, setSearchText] = useState(null);
   const enteredText = (event) => {
-    setRangeNum(event.target.value);
+    setSearchText(event.target.value);
+  };
+  const searchPokemon = (pokemon) => {
+    //set the error handler incase incorrect spelling or id.
+    axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then((res) => {
+      openDetails({
+        name: res.data.name,
+        id: res.data.id,
+        type: res.data.types.map((type) => type.type.name).join(", "),
+        abilities: res.data.abilities
+          .map((ability) => ability.ability.name)
+          .join(", "),
+        height: res.data.height,
+        weight: res.data.weight,
+        moves: res.data.moves.map((move) => move.move.name).join(", "),
+        image: ImageUrl(res.data.id),
+        altImage: res.data.sprites.front_default,
+        altImage2: res.data.forms[0].url,
+        hp: res.data.stats[0].base_stat,
+        attack: res.data.stats[1].base_stat,
+        defense: res.data.stats[2].base_stat,
+        specialAttack: res.data.stats[3].base_stat,
+        specialDefense: res.data.stats[4].base_stat,
+        speed: res.data.stats[5].base_stat,
+      });
+    });
+    closeCard();
   };
 
   return (
@@ -16,11 +50,10 @@ function Nav({ nextBtn, previousBtn, rangeList }) {
           placeholder="Pokemon Range"
           onChange={enteredText}
         ></input>
-        <button onClick={() => rangeList(rangeNum)}>Search</button>
-      </div>
-      <div>
-        <input type="text" placeholder="Specific Pokemon"></input>
-        <button>Search</button>
+        <button onClick={() => rangeList(searchText)}>Search List</button>
+        <button onClick={() => searchPokemon(searchText)}>
+          Search Pokemon
+        </button>
       </div>
       <button className="navBtn" onClick={previousBtn}>
         Previous

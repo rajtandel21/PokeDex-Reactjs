@@ -20,7 +20,6 @@ function BigPokemonCard({
   specialDefense,
   speed,
   closeCard,
-  cardOpen,
 }) {
   const [defaultImage, setDefaultImage] = useState();
 
