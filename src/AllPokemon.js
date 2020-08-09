@@ -97,7 +97,6 @@ function AllPokemon() {
   const rangeList = (range) => {
     let num = parseInt(range / 10, 10) * 10;
     setCurrentUrl(`https://pokeapi.co/api/v2/pokemon/?offset=${num}&limit=20`);
-    console.log(num);
   };
 
   //console.log(pokemon == undefined ? "Loading data..." : pokemon[0].name);
