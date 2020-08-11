@@ -19,16 +19,34 @@
   display: -ms-flexbox;
   display: flex;
   width: 100vw;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.NavBar button {
+.NavBar .pageTitle {
+  width: 50%;
+  background-color: blue;
+  text-align: end;
+}
+
+.NavBar .navBtn {
+  width: 50%;
+  background-color: red;
+  justify-items: center;
+}
+
+.NavBar .navBtn button {
+  cursor: pointer;
+}
+
+.NavBar .navBtn input,
+.NavBar .navBtn button {
   height: 30px;
+  border-radius: 5px;
+  border: none;
 }
 
 .bigCard {

@@ -53,7 +53,7 @@ function Nav({
   return (
     <div className="NavBar">
       <h1 className="pageTitle">Pokedex</h1>
-      <div>
+      <div className="navBtn">
         <input
           type="text"
           placeholder={inputMessage}
@@ -64,13 +64,9 @@ function Nav({
         <button onClick={() => searchPokemon(searchText)}>
           Search Pokemon
         </button>
+        <button onClick={previousBtn}>Previous</button>
+        <button onClick={nextBtn}>Next</button>
       </div>
-      <button className="navBtn" onClick={previousBtn}>
-        Previous
-      </button>
-      <button className="navBtn" onClick={nextBtn}>
-        Next
-      </button>
     </div>
   );
 }

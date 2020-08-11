@@ -10,10 +10,26 @@
 .NavBar {
   display: flex;
   width: 100vw;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
-  button {
-    height: 30px;
+  .pageTitle {
+    width: 50%;
+    background-color: blue;
+    text-align: end;
+  }
+  .navBtn {
+    width: 50%;
+    background-color: red;
+    justify-items: center;
+    button {
+      cursor: pointer;
+    }
+    input,
+    button {
+      height: 30px;
+      border-radius: 5px;
+      border: none;
+    }
   }
 }
 
