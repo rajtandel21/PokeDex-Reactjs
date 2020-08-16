@@ -6,8 +6,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
   background-color: rgb(51, 50, 50);
   background-image: url("./style/smallPokeball.png");
+  background-repeat: 0 0;
+  animation: slide 20s linear infinite;
+}
+
+@keyframes slide {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 350px -400px;
+  }
 }
 
 code {
