@@ -24,8 +24,30 @@ function BigPokemonCard({
   const [defaultImage, setDefaultImage] = useState();
 
   const bigStyle = {
-    width: (attack / 255) * 100,
-    backgroundColor: "#4caf50",
+    hp: {
+      width: (hp / 255) * 100,
+      backgroundColor: "#4caf50",
+    },
+    attack: {
+      width: (attack / 255) * 100,
+      backgroundColor: "#4caf50",
+    },
+    specialAttack: {
+      width: (specialAttack / 255) * 100,
+      backgroundColor: "#4caf50",
+    },
+    defense: {
+      width: (defense / 255) * 100,
+      backgroundColor: "#4caf50",
+    },
+    specialDefense: {
+      width: (specialDefense / 255) * 100,
+      backgroundColor: "#4caf50",
+    },
+    speed: {
+      width: (speed / 255) * 100,
+      backgroundColor: "#4caf50",
+    },
   };
 
   useEffect(() => {
@@ -52,38 +74,44 @@ function BigPokemonCard({
           <img src={defaultImage} alt="Pokemon not found"></img>
           <h1>{`#${id} ${name}`}</h1>
           <p>Type: {type}</p>
+          <p>Abilities: {abilities}</p>
+          <p>
+            Height: {height * 10}cm Weight: {weight / 10}kg
+          </p>
         </div>
 
         <div className="stats">
           <p>Base Stats</p>
           <p>Hp: {hp}</p>
           <div className="statsBar">
-            <div className="statsPercentage hp"></div>
+            <div className="statsPercentage" style={bigStyle.hp}></div>
           </div>
           <p>Attack: {attack}</p>
           <div className="statsBar">
-            <div className="statsPercentage attack" style={bigStyle}></div>
+            <div className="statsPercentage" style={bigStyle.attack}></div>
           </div>
           <p>Special Attack: {specialAttack}</p>
           <div className="statsBar">
-            <div className="statsPercentage spAttack"></div>
+            <div
+              className="statsPercentage"
+              style={bigStyle.specialAttack}
+            ></div>
           </div>
           <p>Defense: {defense}</p>
           <div className="statsBar">
-            <div className="statsPercentage defense"></div>
+            <div className="statsPercentage" style={bigStyle.defense}></div>
           </div>
           <p>Special Defense: {specialDefense}</p>
           <div className="statsBar">
-            <div className="statsPercentage spDefense"></div>
+            <div
+              className="statsPercentage"
+              style={bigStyle.specialDefense}
+            ></div>
           </div>
           <p>Speed: {speed}</p>
           <div className="statsBar">
-            <div className="statsPercentage speed"></div>
+            <div className="statsPercentage" style={bigStyle.speed}></div>
           </div>
-          <p>Abilities: {abilities}</p>
-          <p>
-            Height: {height * 10}cm Weight: {weight / 10}kg
-          </p>
         </div>
       </div>
       <span>&#10060;</span>
