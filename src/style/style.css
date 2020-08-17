@@ -84,12 +84,23 @@
           justify-content: space-evenly;
   border: 1px solid yellow;
   width: 90%;
-  margin: 20px 0px;
+  margin-top: 20px;
 }
 
 .bigCard .details .smallDetails img {
-  height: 250px;
-  width: 240px;
+  height: 270px;
+  width: 260px;
+}
+
+.bigCard .details .stats .statsBar {
+  width: 10vw;
+  height: 10px;
+  background-color: #ddd;
+}
+
+.bigCard .details .stats .statsPercentage {
+  height: 10px;
+  text-align: right;
 }
 
 .cardContainer {
