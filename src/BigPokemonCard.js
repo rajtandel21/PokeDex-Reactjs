@@ -42,17 +42,18 @@ function BigPokemonCard({
   //Make a drop down list for the pokemon moves data.
   return (
     <div className="bigCard" onClick={closeCard}>
-      <h1>{`#${id} ${name}`}</h1>
       <div className="details">
         <div className="smallDetails">
+          <h1>{`#${id} ${name}`}</h1>
+
           <img src={defaultImage} alt="Pokemon not found"></img>
           <p>Type: {type}</p>
+        </div>
+        <div className="stats">
           <p>Abilities: {abilities}</p>
           <p>
             Height: {height * 10}cm Weight: {weight / 10}kg
           </p>
-        </div>
-        <div className="stats">
           <p>Bast Stats:</p>
           <p>Hp: {hp}</p>
           <p>Attack: {attack}</p>
@@ -62,6 +63,7 @@ function BigPokemonCard({
           <p>Speed: {speed}</p>
         </div>
       </div>
+      <span>&#10060;</span>
     </div>
   );
 }

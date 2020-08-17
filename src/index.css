@@ -18,7 +18,7 @@ body {
     background-position: 0 0;
   }
   to {
-    background-position: 350px -400px;
+    background-position: -350px 400px;
   }
 }
 
