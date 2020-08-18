@@ -26,7 +26,7 @@ function SmallPokemonCard(props) {
       <div className="smallCard" onClick={() => props.openDetails(props)}>
         <p className="smallCardName">{`#${props.id} ${props.name}`}</p>
         <img src={defaultImage} alt={`Could Not Get ${props.name}`}></img>
-        <p className="type">{props.type}</p>
+        <p className="type">{props.type.join(", ")}</p>
       </div>
     </div>
   );

@@ -43,13 +43,13 @@ function AllPokemon() {
             key={pokemon.data.id}
             name={pokemon.data.name}
             id={pokemon.data.id}
-            type={pokemon.data.types.map((type) => type.type.name).join(", ")}
+            type={pokemon.data.types.map((type) => type.type.name)}
             abilities={pokemon.data.abilities
               .map((ability) => ability.ability.name)
               .join(", ")}
             height={pokemon.data.height}
             weight={pokemon.data.weight}
-            moves={pokemon.data.moves.map((move) => move.move.name).join(", ")}
+            moves={pokemon.data.moves.map((move) => move.move.name)}
             image={ImageUrl(pokemon.data.id)}
             altImage={pokemon.data.sprites.front_default}
             altImage2={pokemon.data.forms[0].url}
@@ -98,10 +98,6 @@ function AllPokemon() {
     let num = parseInt(range / 10, 10) * 10;
     setCurrentUrl(`https://pokeapi.co/api/v2/pokemon/?offset=${num}&limit=20`);
   };
-
-  //console.log(pokemon == undefined ? "Loading data..." : pokemon[0].name);
-  //<p>{nextUrl}</p>
-  //<p>{prevUrl == null ? "No Previous page" : prevUrl}</p>
 
   return (
     <div className="App-header">

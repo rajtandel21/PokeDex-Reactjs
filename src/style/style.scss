@@ -16,6 +16,21 @@
     width: 50vw;
     text-align: center;
   }
+  .dropdown-Option {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    background-color: rgb(26, 25, 25);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    a {
+      display: block;
+      cursor: pointer;
+    }
+  }
+  .show {
+    display: block;
+  }
   .navBtn {
     display: flex;
     width: 30vw;
@@ -38,20 +53,35 @@
 .bigCard {
   position: fixed;
   display: flex;
+  flex-direction: column;
   align-items: center;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
   width: 50vw;
-  background-color: rgb(26, 25, 25);
+  border-radius: 10px;
+  border: 5px solid rgba(26, 25, 25, 0.5);
   text-transform: capitalize;
+  span {
+    position: absolute;
+    z-index: 3;
+    align-self: flex-end;
+    right: 8px;
+    top: 5px;
+    cursor: pointer;
+    background-color: rgba(26, 25, 25, 0.5);
+    border-radius: 3px;
+    padding: 2px;
+  }
+  h1,
+  p {
+    margin: 5px 0px;
+  }
   .details {
     display: flex;
     justify-content: space-evenly;
-    border: 1px solid yellow;
     width: 90%;
-    margin-top: 20px;
     .smallDetails {
       img {
         height: 270px;
@@ -60,7 +90,7 @@
     }
     .stats {
       .statsBar {
-        width: 10vw;
+        width: 200px;
         height: 10px;
         background-color: #ddd;
       }

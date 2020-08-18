@@ -32,6 +32,25 @@
   text-align: center;
 }
 
+.NavBar .dropdown-Option {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  background-color: #1a1919;
+  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.NavBar .dropdown-Option a {
+  display: block;
+  cursor: pointer;
+}
+
+.NavBar .show {
+  display: block;
+}
+
 .NavBar .navBtn {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -62,6 +81,10 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -71,8 +94,27 @@
           transform: translate(-50%, -50%);
   z-index: 2;
   width: 50vw;
-  background-color: #1a1919;
+  border-radius: 10px;
+  border: 5px solid rgba(26, 25, 25, 0.5);
   text-transform: capitalize;
+}
+
+.bigCard span {
+  position: absolute;
+  z-index: 3;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  right: 8px;
+  top: 5px;
+  cursor: pointer;
+  background-color: rgba(26, 25, 25, 0.5);
+  border-radius: 3px;
+  padding: 2px;
+}
+
+.bigCard h1,
+.bigCard p {
+  margin: 5px 0px;
 }
 
 .bigCard .details {
@@ -82,9 +124,7 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  border: 1px solid yellow;
   width: 90%;
-  margin-top: 20px;
 }
 
 .bigCard .details .smallDetails img {
@@ -93,7 +133,7 @@
 }
 
 .bigCard .details .stats .statsBar {
-  width: 10vw;
+  width: 200px;
   height: 10px;
   background-color: #ddd;
 }

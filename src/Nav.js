@@ -23,13 +23,13 @@ function Nav({
         openDetails({
           name: res.data.name,
           id: res.data.id,
-          type: res.data.types.map((type) => type.type.name).join(", "),
+          type: res.data.types.map((type) => type.type.name),
           abilities: res.data.abilities
             .map((ability) => ability.ability.name)
             .join(", "),
           height: res.data.height,
           weight: res.data.weight,
-          moves: res.data.moves.map((move) => move.move.name).join(", "),
+          moves: res.data.moves.map((move) => move.move.name),
           image: ImageUrl(res.data.id),
           altImage: res.data.sprites.front_default,
           altImage2: res.data.forms[0].url,
@@ -48,8 +48,19 @@ function Nav({
     setSearchText("");
     setMessage("Enter Pokemon Id or Name");
     closeCard();
+    showOptions();
   };
 
+  const [className, setClassName] = useState(["dropdown-Option"]);
+  const showOptions = () => {
+    if (className === "dropdown-Option") {
+      setClassName("dropdown-Option show");
+    } else setClassName("dropdown-Option");
+  };
+  /*<button onClick={() => rangeList(searchText)}>Search List</button>
+        <button onClick={() => searchPokemon(searchText)}>
+          Search Pokemon
+        </button>*/
   return (
     <div className="NavBar">
       <h1 className="pageTitle">Pokedex</h1>
@@ -60,10 +71,15 @@ function Nav({
           onChange={enteredText}
           value={searchText}
         ></input>
-        <button onClick={() => rangeList(searchText)}>Search List</button>
-        <button onClick={() => searchPokemon(searchText)}>
-          Search Pokemon
-        </button>
+        <div className="dropDown">
+          <button className="searchOptions" onClick={showOptions}>
+            Search Options
+          </button>
+          <div id="options" className={className}>
+            <a onClick={() => rangeList(searchText)}>Search Range</a>
+            <a onClick={() => searchPokemon(searchText)}>Search Pokemon</a>
+          </div>
+        </div>
         <button onClick={previousBtn}>Previous</button>
         <button onClick={nextBtn}>Next</button>
       </div>
