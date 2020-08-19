@@ -57,10 +57,7 @@ function Nav({
       setClassName("dropdown-Option show");
     } else setClassName("dropdown-Option");
   };
-  /*<button onClick={() => rangeList(searchText)}>Search List</button>
-        <button onClick={() => searchPokemon(searchText)}>
-          Search Pokemon
-        </button>*/
+
   return (
     <div className="NavBar">
       <h1 className="pageTitle">Pokedex</h1>

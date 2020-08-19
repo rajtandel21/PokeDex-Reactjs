@@ -90,7 +90,6 @@ function BigPokemonCard({
     }
   }, [id]);
 
-  //Make a drop down list for the pokemon moves data.
   return (
     <div className="bigCard" style={bigStyle.backgroundColor}>
       <span onClick={closeCard}>&#10060;</span>
