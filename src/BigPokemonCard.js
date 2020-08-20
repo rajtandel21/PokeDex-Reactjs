@@ -24,6 +24,7 @@ function BigPokemonCard({
   const [defaultImage, setDefaultImage] = useState();
 
   const typeColor = {
+    dataNotFound: "#1a1919",
     normal: "#A8A878",
     fighting: "#C03028",
     flying: "#A890F0",
@@ -75,10 +76,10 @@ function BigPokemonCard({
   };
 
   useEffect(() => {
-    if (id > 807) {
+    if (id > 893) {
       if (altImage !== null) {
         setDefaultImage(altImage);
-      } else {
+      } else if (altImage2 !== null) {
         axios.get(altImage2).then((res) => {
           if (res.data.sprites.front_default !== null) {
             setDefaultImage(res.data.sprites.front_default);

@@ -23,16 +23,22 @@ function Nav({
         openDetails({
           name: res.data.name,
           id: res.data.id,
-          type: res.data.types.map((type) => type.type.name),
-          abilities: res.data.abilities
-            .map((ability) => ability.ability.name)
-            .join(", "),
+          type:
+            res.data.types.length !== 0
+              ? res.data.types.map((type) => type.type.name)
+              : ["dataNotFound"],
+          abilities:
+            res.data.abilities.length !== 0
+              ? res.data.abilities
+                  .map((ability) => ability.ability.name)
+                  .join(", ")
+              : "Data Not Found",
           height: res.data.height,
           weight: res.data.weight,
           moves: res.data.moves.map((move) => move.move.name),
           image: ImageUrl(res.data.id),
           altImage: res.data.sprites.front_default,
-          altImage2: res.data.forms[0].url,
+          altImage2: res.data.forms.length !== 0 ? res.data.forms[0].url : null,
           hp: res.data.stats[0].base_stat,
           attack: res.data.stats[1].base_stat,
           defense: res.data.stats[2].base_stat,
@@ -51,7 +57,19 @@ function Nav({
     showOptions();
   };
 
-  const [className, setClassName] = useState(["dropdown-Option"]);
+  const searchRange = (pokemon) => {
+    console.log(isNaN(pokemon));
+    if (isNaN(pokemon)) {
+      rangeList(pokemon);
+    } else {
+      setSearchText("");
+      setMessage("Enter a Range Number");
+    }
+    setSearchText("");
+    showOptions();
+  };
+
+  const [className, setClassName] = useState("dropdown-Option");
   const showOptions = () => {
     if (className === "dropdown-Option") {
       setClassName("dropdown-Option show");
@@ -69,16 +87,14 @@ function Nav({
           value={searchText}
         ></input>
         <div className="dropDown">
-          <button className="searchOptions" onClick={showOptions}>
-            Search Options
-          </button>
-          <div id="options" className={className}>
-            <a onClick={() => rangeList(searchText)}>Search Range</a>
+          <button className="searchOptions" onClick={showOptions}></button>
+          <div className={className}>
+            <a onClick={() => searchRange(searchText)}>Search Range</a>
             <a onClick={() => searchPokemon(searchText)}>Search Pokemon</a>
           </div>
         </div>
-        <button onClick={previousBtn}>Previous</button>
-        <button onClick={nextBtn}>Next</button>
+        <button className={"prevBtn"} onClick={previousBtn}></button>
+        <button className={"nextBtn"} onClick={nextBtn}></button>
       </div>
     </div>
   );

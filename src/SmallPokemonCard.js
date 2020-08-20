@@ -7,16 +7,16 @@ import axios from "axios";
 function SmallPokemonCard(props) {
   const [defaultImage, setDefaultImage] = useState();
   useEffect(() => {
-    if (props.id > 807) {
+    if (props.id > 893) {
       if (props.altImage !== null) {
         setDefaultImage(props.altImage);
-      } else {
+      } else if (props.altImage2 !== null) {
         axios.get(props.altImage2).then((res) => {
           if (res.data.sprites.front_default !== null) {
             setDefaultImage(res.data.sprites.front_default);
           }
         });
-      }
+      } else setDefaultImage("./styles/Pokeball.png");
     } else {
       setDefaultImage(props.image);
     }
