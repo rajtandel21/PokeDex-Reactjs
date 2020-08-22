@@ -3,6 +3,7 @@ import axios from "axios";
 import SmallPokemonCard from "./SmallPokemonCard";
 import BigPokemonCard from "./BigPokemonCard";
 import Nav from "./Nav";
+import { ImageUrl } from "./reuseFunctions";
 
 function AllPokemon() {
   const [pokemon, setPokemon] = useState();
@@ -16,22 +17,16 @@ function AllPokemon() {
   const [card, showCard] = useState(false);
   const [props, setProps] = useState();
 
+  useEffect(() => {
+    pokemonList();
+  }, [currentUrl]);
+
   const pokemonList = () => {
     axios.get(currentUrl).then((res) => {
       setNextUrl(res.data.next);
       setPrevUrl(res.data.previous);
       pokemonData(res.data.results);
     });
-  };
-
-  const ImageUrl = (id) => {
-    if (id >= 10 && id < 100) {
-      return `https://assets.pokemon.com/assets/cms2/img/pokedex/full/0${id}.png`;
-    } else if (id < 10) {
-      return `https://assets.pokemon.com/assets/cms2/img/pokedex/full/00${id}.png`;
-    } else {
-      return `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png`;
-    }
   };
 
   const pokemonData = (results) => {
@@ -43,10 +38,18 @@ function AllPokemon() {
             key={pokemon.data.id}
             name={pokemon.data.name}
             id={pokemon.data.id}
-            type={pokemon.data.types.map((type) => type.type.name)}
-            abilities={pokemon.data.abilities
-              .map((ability) => ability.ability.name)
-              .join(", ")}
+            type={
+              pokemon.data.types.length != 0
+                ? pokemon.data.types.map((type) => type.type.name)
+                : ["dataNotFound"]
+            }
+            abilities={
+              pokemon.data.abilities.length != 0
+                ? pokemon.data.abilities
+                    .map((ability) => ability.ability.name)
+                    .join(", ")
+                : "Data Not Found"
+            }
             height={pokemon.data.height}
             weight={pokemon.data.weight}
             moves={pokemon.data.moves.map((move) => move.move.name)}
@@ -70,9 +73,18 @@ function AllPokemon() {
     isLoading(false);
   };
 
-  useEffect(() => {
-    pokemonList();
-  }, [currentUrl]);
+  const openDetails = (props) => {
+    setProps(props);
+    showCard(true);
+  };
+  const closeCard = () => {
+    showCard(false);
+  };
+
+  const rangeList = (range) => {
+    let num = parseInt(range / 10, 10) * 10;
+    setCurrentUrl(`https://pokeapi.co/api/v2/pokemon/?offset=${num}&limit=20`);
+  };
 
   const nextBtn = () => {
     if (nextUrl != null) {
@@ -86,19 +98,6 @@ function AllPokemon() {
       setCurrentUrl(prevUrl);
       isLoading(true);
     }
-  };
-
-  const openDetails = (props) => {
-    setProps(props);
-    showCard(true);
-  };
-  const closeCard = () => {
-    showCard(false);
-  };
-
-  const rangeList = (range) => {
-    let num = parseInt(range / 10, 10) * 10;
-    setCurrentUrl(`https://pokeapi.co/api/v2/pokemon/?offset=${num}&limit=20`);
   };
 
   return (

@@ -75,28 +75,35 @@
   cursor: pointer;
 }
 
+.NavBar .navBtn button:hover {
+  background-color: #f13b3b;
+}
+
 .NavBar .navBtn .searchOptions {
   background: url("./searchIcon.png");
-  width: 40px;
+  width: 50px;
   background-repeat: no-repeat;
   background-size: contain;
-  background-color: cornflowerblue;
+  background-color: #5cabc0;
+  background-position: center;
 }
 
 .NavBar .navBtn .prevBtn {
   background: url("./previousIcon.png");
-  width: 40px;
+  width: 50px;
   background-repeat: no-repeat;
   background-size: contain;
-  background-color: cornflowerblue;
+  background-color: #5cabc0;
+  background-position: center;
 }
 
 .NavBar .navBtn .nextBtn {
   background: url("./nextIcon.png");
-  width: 40px;
+  width: 50px;
   background-repeat: no-repeat;
   background-size: contain;
-  background-color: cornflowerblue;
+  background-color: #5cabc0;
+  background-position: center;
 }
 
 .NavBar .navBtn input,

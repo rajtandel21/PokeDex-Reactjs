@@ -45,27 +45,33 @@
     align-content: center;
     button {
       cursor: pointer;
+      &:hover {
+        background-color: #f13b3b;
+      }
     }
     .searchOptions {
       background: url("./searchIcon.png");
-      width: 40px;
+      width: 50px;
       background-repeat: no-repeat;
       background-size: contain;
-      background-color: cornflowerblue;
+      background-color: #5cabc0;
+      background-position: center;
     }
     .prevBtn {
       background: url("./previousIcon.png");
-      width: 40px;
+      width: 50px;
       background-repeat: no-repeat;
       background-size: contain;
-      background-color: cornflowerblue;
+      background-color: #5cabc0;
+      background-position: center;
     }
     .nextBtn {
       background: url("./nextIcon.png");
-      width: 40px;
+      width: 50px;
       background-repeat: no-repeat;
       background-size: contain;
-      background-color: cornflowerblue;
+      background-color: #5cabc0;
+      background-position: center;
     }
     input,
     button {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./style/style.css";
-import axios from "axios";
+import { imageSelect, typeColor } from "./reuseFunctions";
 
 function BigPokemonCard({
   name,
@@ -23,27 +23,9 @@ function BigPokemonCard({
 }) {
   const [defaultImage, setDefaultImage] = useState();
 
-  const typeColor = {
-    dataNotFound: "#1a1919",
-    normal: "#A8A878",
-    fighting: "#C03028",
-    flying: "#A890F0",
-    poison: "#A040A0",
-    ground: "#E0C068",
-    rock: "#B8A038",
-    bug: "#A8B820",
-    ghost: "#705898",
-    steel: "#B8B8D0",
-    fire: "#f56935",
-    grass: "#5C9836",
-    water: "#5cabc0",
-    electric: "#E5BD1D",
-    psychic: "#F85888",
-    ice: "#98D8D8",
-    dragon: "#7038F8",
-    dark: "#705848",
-    fairy: "#EE99AC",
-  };
+  useEffect(() => {
+    setDefaultImage(imageSelect(id, image, altImage, altImage2));
+  }, [id]);
 
   const bigStyle = {
     hp: {
@@ -74,22 +56,6 @@ function BigPokemonCard({
       backgroundColor: typeColor[`${type[0]}`],
     },
   };
-
-  useEffect(() => {
-    if (id > 893) {
-      if (altImage !== null) {
-        setDefaultImage(altImage);
-      } else if (altImage2 !== null) {
-        axios.get(altImage2).then((res) => {
-          if (res.data.sprites.front_default !== null) {
-            setDefaultImage(res.data.sprites.front_default);
-          }
-        });
-      }
-    } else {
-      setDefaultImage(image);
-    }
-  }, [id]);
 
   return (
     <div className="bigCard" style={bigStyle.backgroundColor}>

@@ -15,6 +15,7 @@ function Nav({
   const enteredText = (event) => {
     setSearchText(event.target.value);
   };
+
   const searchPokemon = (pokemon) => {
     //set the error handler incase incorrect spelling or id.
     axios
@@ -58,13 +59,7 @@ function Nav({
   };
 
   const searchRange = (pokemon) => {
-    console.log(isNaN(pokemon));
-    if (isNaN(pokemon)) {
-      rangeList(pokemon);
-    } else {
-      setSearchText("");
-      setMessage("Enter a Range Number");
-    }
+    rangeList(pokemon);
     setSearchText("");
     showOptions();
   };
