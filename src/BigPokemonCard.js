@@ -25,7 +25,7 @@ function BigPokemonCard({
 
   useEffect(() => {
     setDefaultImage(imageSelect(id, image, altImage, altImage2));
-  }, [id]);
+  }, [id, image, altImage, altImage2]);
 
   const bigStyle = {
     hp: {

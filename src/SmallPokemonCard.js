@@ -8,7 +8,7 @@ function SmallPokemonCard(props) {
     setDefaultImage(
       imageSelect(props.id, props.image, props.altImage, props.altImage2)
     );
-  }, [props.id]);
+  }, [props]);
   return (
     <div>
       <div className="smallCard" onClick={() => props.openDetails(props)}>

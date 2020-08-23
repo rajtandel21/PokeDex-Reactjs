@@ -1,0 +1,67 @@
+.bigCard {
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 50vw;
+  border-radius: 10px;
+  border: 5px solid rgba(26, 25, 25, 0.5);
+  text-transform: capitalize;
+}
+
+.bigCard span {
+  position: absolute;
+  z-index: 3;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  right: 8px;
+  top: 5px;
+  cursor: pointer;
+  background-color: rgba(26, 25, 25, 0.5);
+  border-radius: 3px;
+  padding: 2px;
+}
+
+.bigCard h1,
+.bigCard p {
+  margin: 5px 0px;
+}
+
+.bigCard .details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 90%;
+}
+
+.bigCard .details .smallDetails img {
+  height: 270px;
+  width: 260px;
+}
+
+.bigCard .details .stats .statsBar {
+  width: 200px;
+  height: 10px;
+  background-color: #ddd;
+}
+
+.bigCard .details .stats .statsPercentage {
+  height: 10px;
+  text-align: right;
+}
+/*# sourceMappingURL=bigCardStyle.css.map */

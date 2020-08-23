@@ -1,0 +1,51 @@
+.bigCard {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 50vw;
+  border-radius: 10px;
+  border: 5px solid rgba(26, 25, 25, 0.5);
+  text-transform: capitalize;
+  span {
+    position: absolute;
+    z-index: 3;
+    align-self: flex-end;
+    right: 8px;
+    top: 5px;
+    cursor: pointer;
+    background-color: rgba(26, 25, 25, 0.5);
+    border-radius: 3px;
+    padding: 2px;
+  }
+  h1,
+  p {
+    margin: 5px 0px;
+  }
+  .details {
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+    .smallDetails {
+      img {
+        height: 270px;
+        width: 260px;
+      }
+    }
+    .stats {
+      .statsBar {
+        width: 200px;
+        height: 10px;
+        background-color: #ddd;
+      }
+      .statsPercentage {
+        height: 10px;
+        text-align: right;
+      }
+    }
+  }
+}

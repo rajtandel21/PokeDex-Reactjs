@@ -84,8 +84,12 @@ function Nav({
         <div className="dropDown">
           <button className="searchOptions" onClick={showOptions}></button>
           <div className={className}>
-            <a onClick={() => searchRange(searchText)}>Search Range</a>
-            <a onClick={() => searchPokemon(searchText)}>Search Pokemon</a>
+            <button onClick={() => searchRange(searchText)}>
+              Search Range
+            </button>
+            <button onClick={() => searchPokemon(searchText)}>
+              Search Pokemon
+            </button>
           </div>
         </div>
         <button className={"prevBtn"} onClick={previousBtn}></button>

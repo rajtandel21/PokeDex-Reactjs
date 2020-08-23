@@ -1,0 +1,66 @@
+.NavBar {
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  .pageTitle {
+    width: 50vw;
+    text-align: center;
+  }
+  .dropdown-Option {
+    display: none;
+    position: absolute;
+    min-width: 140px;
+    background-color: #5cabc0;
+    z-index: 1;
+    margin-top: -5px;
+    margin-left: -10px;
+    border-radius: 5px;
+  }
+  .show {
+    display: block;
+  }
+  .navBtn {
+    display: flex;
+    width: 30vw;
+    justify-content: center;
+    align-content: center;
+    button {
+      cursor: pointer;
+      &:hover {
+        background-color: #f13b3b;
+      }
+    }
+    .searchOptions {
+      background: url("./searchIcon.png");
+      width: 50px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: #5cabc0;
+      background-position: center;
+    }
+    .prevBtn {
+      background: url("./previousIcon.png");
+      width: 50px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: #5cabc0;
+      background-position: center;
+    }
+    .nextBtn {
+      background: url("./nextIcon.png");
+      width: 50px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: #5cabc0;
+      background-position: center;
+    }
+    input,
+    button {
+      height: 40px;
+      border: none;
+      border-radius: 5px;
+      margin: 10px;
+    }
+  }
+}

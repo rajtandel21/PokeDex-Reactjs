@@ -39,12 +39,12 @@ function AllPokemon() {
             name={pokemon.data.name}
             id={pokemon.data.id}
             type={
-              pokemon.data.types.length != 0
+              pokemon.data.types.length !== 0
                 ? pokemon.data.types.map((type) => type.type.name)
                 : ["dataNotFound"]
             }
             abilities={
-              pokemon.data.abilities.length != 0
+              pokemon.data.abilities.length !== 0
                 ? pokemon.data.abilities
                     .map((ability) => ability.ability.name)
                     .join(", ")
