@@ -50,8 +50,9 @@ export const typeColor = {
 };
 
 //fetch specific pokemon data. Used in Nav and BigPokemonCard.
-/*export async function getPokemon(res) {
-  return ({
+//export async function getPokemon(res) {
+//return axios.get(`https://pokeapi.co/api/v2/pokemon/${res}`);
+/*return ({
         name: res.data.name,
         id: res.data.id,
         type:
@@ -76,6 +77,5 @@ export const typeColor = {
         specialAttack: res.data.stats[3].base_stat,
         specialDefense: res.data.stats[4].base_stat,
         speed: res.data.stats[5].base_stat,
-      });
-   
-}*/
+      });*/
+//}
