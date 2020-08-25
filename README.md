@@ -2,6 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## #Pokedex Reactjs
 
+Click [here](https://hopeful-joliot-33061f.netlify.app) to visit the site.
 It's an updated pokedex project being developed in Reactjs.
 
 The project is still under development and not complete.
