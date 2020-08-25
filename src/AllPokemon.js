@@ -3,7 +3,7 @@ import axios from "axios";
 import SmallPokemonCard from "./SmallPokemonCard";
 import BigPokemonCard from "./BigPokemonCard";
 import Nav from "./Nav";
-import { ImageUrl } from "./reuseFunctions";
+import { imageSelect, ImageUrl } from "./reuseFunctions";
 
 function AllPokemon() {
   const [pokemon, setPokemon] = useState();
@@ -53,9 +53,12 @@ function AllPokemon() {
             height={pokemon.data.height}
             weight={pokemon.data.weight}
             moves={pokemon.data.moves.map((move) => move.move.name)}
-            image={ImageUrl(pokemon.data.id)}
-            altImage={pokemon.data.sprites.front_default}
-            altImage2={
+            image={imageSelect(
+              pokemon.data.id,
+              pokemon.data.sprites.front_default,
+              pokemon.data.forms.length !== 0 ? pokemon.data.forms[0].url : null
+            )}
+            altImage={
               pokemon.data.forms.length !== 0 ? pokemon.data.forms[0].url : null
             }
             hp={pokemon.data.stats[0].base_stat}

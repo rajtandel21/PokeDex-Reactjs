@@ -1,21 +1,33 @@
-import axios from "axios";
-
 //Sets the default pokemon image. Used in SmallPokemonCard and BigPokemonCard
-export function imageSelect(id, image, altImage, altImage2) {
+export const imageSelect = (id, altImage, altImage2) => {
+  let newImage = ImageUrl(id);
   if (id > 893) {
     if (altImage !== null) {
       return altImage;
     } else if (altImage2 !== null) {
-      axios.get(altImage2).then((res) => {
+      newImage = undefined;
+    }
+  } else {
+    return newImage;
+  }
+};
+
+/*export function imageSelect(id, image, altImage, altImage2) {
+  let newImage = image;
+  if (id > 893) {
+    if (altImage !== null) {
+      return altImage;
+    } else if (altImage2 !== null) {
+      return axios.get(altImage2).then((res) => {
         if (res.data.sprites.front_default !== null) {
-          return res.data.sprites.front_default;
+          newImage = res.data.sprites.front_default;
         }
       });
     }
   } else {
-    return image;
+    return newImage;
   }
-}
+}*/
 
 export const ImageUrl = (id) => {
   if (id >= 10 && id < 100) {

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./style/style.css";
-import { imageSelect, typeColor } from "./reuseFunctions";
+import bigPokeball from "./style/bigPokeball.png";
+import { typeColor } from "./reuseFunctions";
+import axios from "axios";
 
 function BigPokemonCard({
   name,
@@ -12,7 +14,6 @@ function BigPokemonCard({
   moves,
   image,
   altImage,
-  altImage2,
   hp,
   attack,
   defense,
@@ -24,8 +25,14 @@ function BigPokemonCard({
   const [defaultImage, setDefaultImage] = useState();
 
   useEffect(() => {
-    setDefaultImage(imageSelect(id, image, altImage, altImage2));
-  }, [id, image, altImage, altImage2]);
+    if (image === undefined) {
+      axios.get(altImage).then((res) => {
+        if (res.data.sprites.front_default !== null) {
+          setDefaultImage(res.data.sprites.front_default);
+        }
+      });
+    } else setDefaultImage(image);
+  }, [image, altImage]);
 
   const bigStyle = {
     hp: {
@@ -62,6 +69,7 @@ function BigPokemonCard({
       <span onClick={closeCard}>&#10060;</span>
       <div className="details">
         <div className="smallDetails">
+          <img className="backgroundPokeball" src={bigPokeball}></img>
           <img src={defaultImage} alt="Pokemon not found"></img>
           <h1>{`#${id} ${name}`}</h1>
           <p>Type: {type.join(" ,")}</p>

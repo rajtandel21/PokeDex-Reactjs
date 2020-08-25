@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import "./style/style.css";
-import { imageSelect, typeColor } from "./reuseFunctions";
+import { typeColor } from "./reuseFunctions";
+import axios from "axios";
 
 function SmallPokemonCard(props) {
   const [defaultImage, setDefaultImage] = useState();
+
   useEffect(() => {
-    setDefaultImage(
-      imageSelect(props.id, props.image, props.altImage, props.altImage2)
-    );
+    if (props.image === undefined) {
+      axios.get(props.altImage).then((res) => {
+        if (res.data.sprites.front_default !== null) {
+          setDefaultImage(res.data.sprites.front_default);
+        }
+      });
+    } else setDefaultImage(props.image);
   }, [props]);
 
   const typeBackgroundColor = () => {

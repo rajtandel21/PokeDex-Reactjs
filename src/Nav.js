@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./style/style.css";
 import axios from "axios";
+import { imageSelect } from "./reuseFunctions";
 
 function Nav({
   nextBtn,
@@ -37,9 +38,12 @@ function Nav({
           height: res.data.height,
           weight: res.data.weight,
           moves: res.data.moves.map((move) => move.move.name),
-          image: ImageUrl(res.data.id),
-          altImage: res.data.sprites.front_default,
-          altImage2: res.data.forms.length !== 0 ? res.data.forms[0].url : null,
+          image: imageSelect(
+            res.data.id,
+            res.data.sprites.front_default,
+            res.data.forms.length !== 0 ? res.data.forms[0].url : null
+          ),
+          altImage: res.data.forms.length !== 0 ? res.data.forms[0].url : null,
           hp: res.data.stats[0].base_stat,
           attack: res.data.stats[1].base_stat,
           defense: res.data.stats[2].base_stat,
@@ -84,10 +88,16 @@ function Nav({
         <div className="dropDown">
           <button className="searchOptions" onClick={showOptions}></button>
           <div className={className}>
-            <button onClick={() => searchRange(searchText)}>
+            <button
+              className="optionBtn"
+              onClick={() => searchRange(searchText)}
+            >
               Search Range
             </button>
-            <button onClick={() => searchPokemon(searchText)}>
+            <button
+              className="optionBtn"
+              onClick={() => searchPokemon(searchText)}
+            >
               Search Pokemon
             </button>
           </div>

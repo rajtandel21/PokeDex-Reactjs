@@ -23,7 +23,7 @@
   background-color: #5cabc0;
   z-index: 1;
   margin-top: -5px;
-  margin-left: -10px;
+  margin-left: -70px;
   border-radius: 5px;
 }
 
@@ -43,7 +43,14 @@
       align-content: center;
 }
 
+.NavBar .navBtn .optionBtn {
+  margin: 4px;
+  color: white;
+}
+
 .NavBar .navBtn button {
+  font-size: 0.91em;
+  background-color: #333232;
   cursor: pointer;
 }
 

@@ -14,7 +14,7 @@
     background-color: #5cabc0;
     z-index: 1;
     margin-top: -5px;
-    margin-left: -10px;
+    margin-left: -70px;
     border-radius: 5px;
   }
   .show {
@@ -25,7 +25,13 @@
     width: 30vw;
     justify-content: center;
     align-content: center;
+    .optionBtn {
+      margin: 4px;
+      color: white;
+    }
     button {
+      font-size: 0.91em;
+      background-color: #333232;
       cursor: pointer;
       &:hover {
         background-color: #f13b3b;
