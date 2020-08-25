@@ -28,10 +28,15 @@
       object-fit: contain;
     }
     .type {
+      display: flex;
+      justify-content: space-around;
       align-self: center;
       width: 150px;
-      color: black;
-      border: 1px solid black;
+      color: white;
+      span {
+        width: 100%;
+        border-radius: 5px;
+      }
     }
   }
 }
